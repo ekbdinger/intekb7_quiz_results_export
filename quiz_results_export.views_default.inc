@@ -22,7 +22,7 @@ function quiz_results_export_views_default_views() {
 
   /* Display: Defaults */
   $handler = $view->new_display('default', 'Defaults', 'default');
-  $handler->display->display_options['title'] = 'HIPAA Certification Test Results';
+  $handler->display->display_options['title'] = 'HR Day 2013 Test Results';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
@@ -94,7 +94,9 @@ function quiz_results_export_views_default_views() {
   $handler->display->display_options['header']['text']['table'] = 'views';
   $handler->display->display_options['header']['text']['field'] = 'area';
   $handler->display->display_options['header']['text']['empty'] = TRUE;
-  $handler->display->display_options['header']['text']['content'] = '<p>&nbsp;</p>';
+  $handler->display->display_options['header']['text']['content'] = '<p>&nbsp;</p>
+<h3><a href="/hr/hrday/quiz/results/export">Export the quiz results to excel</a></h3>
+<p>&nbsp;</p>';
   $handler->display->display_options['header']['text']['format'] = '2';
   /* Relationship: Quiz Results: User */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
@@ -162,7 +164,7 @@ function quiz_results_export_views_default_views() {
   $handler->display->display_options['filters']['nid_1']['table'] = 'node';
   $handler->display->display_options['filters']['nid_1']['field'] = 'nid';
   $handler->display->display_options['filters']['nid_1']['relationship'] = 'nid';
-  $handler->display->display_options['filters']['nid_1']['value']['value'] = '10285';
+  $handler->display->display_options['filters']['nid_1']['value']['value'] = '10328';
   $handler->display->display_options['filters']['nid_1']['group'] = '0';
   $handler->display->display_options['filters']['nid_1']['expose']['operator'] = FALSE;
   /* Filter criterion: Quiz Results: Quiz State */
@@ -202,6 +204,8 @@ function quiz_results_export_views_default_views() {
 
   /* Display: HIPAA Test */
   $handler = $view->new_display('page', 'HIPAA Test', 'page_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'HIPAA Test 2012';
   $handler->display->display_options['defaults']['access'] = FALSE;
   $handler->display->display_options['access']['type'] = 'role';
   $handler->display->display_options['access']['role'] = array(
@@ -321,6 +325,8 @@ function quiz_results_export_views_default_views() {
 
   /* Display: HIPAA 2013 */
   $handler = $view->new_display('page', 'HIPAA 2013', 'page_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'HIPAA 2013 Test Results';
   $handler->display->display_options['defaults']['header'] = FALSE;
   /* Header: Global: Text area */
   $handler->display->display_options['header']['text']['id'] = 'text';
@@ -466,6 +472,8 @@ function quiz_results_export_views_default_views() {
 
   /* Display: SH 2013 Export */
   $handler = $view->new_display('views_data_export', 'SH 2013 Export', 'views_data_export_2');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Sexual Harassment 2013 Test Results';
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
   $handler->display->display_options['style_options']['provide_file'] = 1;
@@ -475,6 +483,75 @@ function quiz_results_export_views_default_views() {
   $handler->display->display_options['style_options']['replace_newlines'] = 0;
   $handler->display->display_options['style_options']['header'] = 1;
   $handler->display->display_options['path'] = 'test/results/sh2013/export';
+  $handler->display->display_options['sitename_title'] = 0;
+
+  /* Display: HR Day 2013 */
+  $handler = $view->new_display('page', 'HR Day 2013', 'page_5');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'HR Day 2013 Test Results';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Nid */
+  $handler->display->display_options['filters']['nid_1']['id'] = 'nid_1';
+  $handler->display->display_options['filters']['nid_1']['table'] = 'node';
+  $handler->display->display_options['filters']['nid_1']['field'] = 'nid';
+  $handler->display->display_options['filters']['nid_1']['relationship'] = 'nid';
+  $handler->display->display_options['filters']['nid_1']['value']['value'] = '10328';
+  $handler->display->display_options['filters']['nid_1']['group'] = '0';
+  $handler->display->display_options['filters']['nid_1']['expose']['operator'] = FALSE;
+  /* Filter criterion: Quiz Results: Quiz State */
+  $handler->display->display_options['filters']['quiz_state']['id'] = 'quiz_state';
+  $handler->display->display_options['filters']['quiz_state']['table'] = 'quiz_node_results';
+  $handler->display->display_options['filters']['quiz_state']['field'] = 'quiz_state';
+  $handler->display->display_options['filters']['quiz_state']['value'] = array(
+    'quiz_state' => 'finished',
+  );
+  $handler->display->display_options['filters']['quiz_state']['group'] = '0';
+  $handler->display->display_options['filters']['quiz_state']['expose']['operator'] = FALSE;
+  /* Filter criterion: User: Name */
+  $handler->display->display_options['filters']['uid']['id'] = 'uid';
+  $handler->display->display_options['filters']['uid']['table'] = 'users';
+  $handler->display->display_options['filters']['uid']['field'] = 'uid';
+  $handler->display->display_options['filters']['uid']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['uid']['value'] = '';
+  $handler->display->display_options['filters']['uid']['group'] = '0';
+  $handler->display->display_options['filters']['uid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['uid']['expose']['operator_id'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['label'] = 'Search by Username';
+  $handler->display->display_options['filters']['uid']['expose']['operator'] = 'uid_op';
+  $handler->display->display_options['filters']['uid']['expose']['identifier'] = 'uid';
+  $handler->display->display_options['filters']['uid']['expose']['remember'] = TRUE;
+  /* Filter criterion: User: E-mail */
+  $handler->display->display_options['filters']['mail']['id'] = 'mail';
+  $handler->display->display_options['filters']['mail']['table'] = 'users';
+  $handler->display->display_options['filters']['mail']['field'] = 'mail';
+  $handler->display->display_options['filters']['mail']['relationship'] = 'uid';
+  $handler->display->display_options['filters']['mail']['operator'] = 'contains';
+  $handler->display->display_options['filters']['mail']['group'] = '0';
+  $handler->display->display_options['filters']['mail']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['mail']['expose']['operator_id'] = 'mail_op';
+  $handler->display->display_options['filters']['mail']['expose']['label'] = 'Search by E-mail';
+  $handler->display->display_options['filters']['mail']['expose']['operator'] = 'mail_op';
+  $handler->display->display_options['filters']['mail']['expose']['identifier'] = 'mail';
+  $handler->display->display_options['path'] = 'hr/hrday/quiz/results';
+
+  /* Display: HR Day 2013 Export */
+  $handler = $view->new_display('views_data_export', 'HR Day 2013 Export', 'views_data_export_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'HR Day 2013 Test Results';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'views_data_export_csv';
+  $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['filename'] = 'hr_day_test_results.csv';
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['style_options']['quote'] = 1;
+  $handler->display->display_options['style_options']['trim'] = 0;
+  $handler->display->display_options['style_options']['replace_newlines'] = 0;
+  $handler->display->display_options['style_options']['header'] = 1;
+  $handler->display->display_options['path'] = 'hr/hrday/quiz/results/export';
+  $handler->display->display_options['sitename_title'] = 0;
   $export['test_quiz_results'] = $view;
 
   return $export;
